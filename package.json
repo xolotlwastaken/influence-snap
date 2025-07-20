@@ -1,0 +1,32 @@
+{
+  "name": "influencesnap-landing",
+  "version": "1.0.0",
+  "description": "High-converting landing page for InfluenceSnap - One-Click Influencer Outreach for Micro-SaaS",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 3000 -o",
+    "dev": "npx live-server --port=3000 --open=/",
+    "build": "echo 'Static site ready for deployment'",
+    "deploy": "echo 'Ready for deployment to Vercel, Netlify, or any static hosting'"
+  },
+  "keywords": [
+    "saas",
+    "landing-page",
+    "influencer-marketing",
+    "conversion-optimization",
+    "responsive-design"
+  ],
+  "author": "InfluenceSnap Team",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/influencesnap-landing"
+  },
+  "dependencies": {
+    "stripe": "^13.0.0"
+  }
+}

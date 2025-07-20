@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfluenceSnap - One-Click Influencer Outreach for Micro-SaaS</title>
+    <meta name="description" content="Get influencers talking about your SaaS without ads or agencies. Find niche creators, send perfect pitches, and track outreach in one tool.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sticky Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>🎯 InfluenceSnap</h2>
+            </div>
+            <button class="nav-cta-btn">Try It Free</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-headline">
+                    Get Influencers Talking About Your SaaS — <span class="highlight">Without Ads or Agencies</span>
+                </h1>
+                <p class="hero-subheadline">
+                    InfluenceSnap helps bootstrapped founders find niche creators, send perfect pitches, and track outreach — all in one tool.
+                </p>
+                
+                <div class="hero-benefits">
+                    <div class="benefit-item">
+                        <i class="fas fa-bullseye"></i>
+                        <span>Find 10 niche-matched influencers in seconds</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-pen"></i>
+                        <span>Auto-generate high-converting outreach messages</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-brain"></i>
+                        <span>No marketing experience required</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-envelope-open"></i>
+                        <span>Built-in mini CRM to track conversations</span>
+                    </div>
+                    <div class="benefit-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>Zero ad spend, real conversations</span>
+                    </div>
+                </div>
+
+                <div class="hero-cta">
+                    <button class="primary-cta" onclick="scrollToCTA()">
+                        Try It Free – No Credit Card Required
+                    </button>
+                </div>
+
+                <!-- Email Capture Form -->
+                <div class="email-capture">
+                    <form class="email-form" id="heroEmailForm">
+                        <input type="email" placeholder="Enter your email for early access" required>
+                        <button type="submit">Get Started</button>
+                    </form>
+                    <p class="privacy-note">No spam, unsubscribe anytime. Built by founders, for founders.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Pain Section -->
+    <section class="pain-section">
+        <div class="container">
+            <h2 class="section-title">Doing influencer outreach manually? It's a nightmare.</h2>
+            
+            <div class="pain-points">
+                <div class="pain-point">
+                    <div class="pain-icon">😤</div>
+                    <h3>"I spent 6 hours just building a list of YouTubers… and didn't even reach out."</h3>
+                    <p>Research is endless. You scroll through channels, check follower counts, try to figure out contact info — and by the end of the day, you're burned out with zero outreach done.</p>
+                </div>
+                
+                <div class="pain-point">
+                    <div class="pain-icon">😬</div>
+                    <h3>"Writing cold DMs is awkward — and they usually get ignored."</h3>
+                    <p>You stare at a blank message box for 20 minutes. Sound too salesy? They'll ignore you. Too casual? You seem unprofessional. Most messages get no reply anyway.</p>
+                </div>
+                
+                <div class="pain-point">
+                    <div class="pain-icon">🤷‍♂️</div>
+                    <h3>"I can't tell who I contacted last week, or if anyone replied."</h3>
+                    <p>Spreadsheets become a mess. You accidentally message the same person twice. Or miss a reply for days. Organization becomes a full-time job.</p>
+                </div>
+            </div>
+
+            <div class="belief-deconstruction">
+                <blockquote>
+                    "You don't need a big budget, a VA, or a massive following. You just need a tool that does the heavy lifting for you — with real results from micro-influencers."
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desired Outcome Section -->
+    <section class="outcome-section">
+        <div class="container">
+            <h2 class="section-title">Now imagine this instead…</h2>
+            
+            <div class="outcome-points">
+                <div class="outcome-point">
+                    <div class="outcome-icon">⚡</div>
+                    <h3>Instant Influencer Discovery</h3>
+                    <p>You upload your product — and instantly get 10 niche influencers, pre-qualified and ready to contact. No more endless scrolling or research rabbit holes.</p>
+                </div>
+                
+                <div class="outcome-point">
+                    <div class="outcome-icon">🎯</div>
+                    <h3>Perfect Pitches Written For You</h3>
+                    <p>You send them a pitch written <strong>for you</strong>, in your tone, without sounding robotic. Each message feels personal and genuine.</p>
+                </div>
+                
+                <div class="outcome-point">
+                    <div class="outcome-icon">🤝</div>
+                    <h3>Real Relationships, Real Users</h3>
+                    <p>You start building real relationships that get you actual users — all without touching ads. Organic growth through authentic connections.</p>
+                </div>
+            </div>
+
+            <div class="new-paradigm">
+                <blockquote>
+                    "Influencer outreach doesn't have to be messy, manual, or expensive. InfluenceSnap makes it as easy as sending an email."
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Introduction Section -->
+    <section class="product-section">
+        <div class="container">
+            <div class="product-intro">
+                <h2 class="section-title">
+                    <span class="product-name">InfluenceSnap</span> is the first influencer outreach tool built <em>specifically for micro-SaaS founders</em> who hate marketing.
+                </h2>
+            </div>
+
+            <div class="how-it-works">
+                <h3>How It Works</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-icon">📥</div>
+                        <div class="step-number">1</div>
+                        <h4>Upload Your Product</h4>
+                        <p>Upload your product description or landing page</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">🔎</div>
+                        <div class="step-number">2</div>
+                        <h4>Find Influencers</h4>
+                        <p>We find 10 relevant micro-influencers in your niche</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">✉️</div>
+                        <div class="step-number">3</div>
+                        <h4>Send & Track</h4>
+                        <p>Get ready-to-send pitches and track everything in your outreach CRM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CRM Preview -->
+            <div class="crm-preview">
+                <h3>Your Outreach Dashboard</h3>
+                <div class="crm-table">
+                    <div class="table-header">
+                        <div>Influencer</div>
+                        <div>Followers</div>
+                        <div>Status</div>
+                        <div>Last Contact</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="influencer-info">
+                            <img src="https://via.placeholder.com/40" alt="Influencer">
+                            <div>
+                                <div class="name">@TechReviewer_Sam</div>
+                                <div class="platform">YouTube</div>
+                            </div>
+                        </div>
+                        <div>12.5K</div>
+                        <div><span class="status replied">Replied</span></div>
+                        <div>2 days ago</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="influencer-info">
+                            <img src="https://via.placeholder.com/40" alt="Influencer">
+                            <div>
+                                <div class="name">@SaaSGuru</div>
+                                <div class="platform">Twitter</div>
+                            </div>
+                        </div>
+                        <div>8.2K</div>
+                        <div><span class="status pending">Sent</span></div>
+                        <div>5 days ago</div>
+                    </div>
+                    <div class="table-row">
+                        <div class="influencer-info">
+                            <img src="https://via.placeholder.com/40" alt="Influencer">
+                            <div>
+                                <div class="name">@ProductHuntDaily</div>
+                                <div class="platform">Instagram</div>
+                            </div>
+                        </div>
+                        <div>15.8K</div>
+                        <div><span class="status interested">Interested</span></div>
+                        <div>1 day ago</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="founder-message">
+                <div class="founder-content">
+                    <blockquote>
+                        "I built InfluenceSnap because I hated cold outreach too. As a solo SaaS founder, I needed a way to get users — without ads or spammy tactics. This is the tool I wish I had years ago."
+                    </blockquote>
+                    <div class="founder-signature">
+                        <img src="https://via.placeholder.com/60" alt="Founder" class="founder-avatar">
+                        <div>
+                            <div class="founder-name">– Alex Chen</div>
+                            <div class="founder-title">Founder, InfluenceSnap</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta-section" id="final-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Start Outreach Now – Your First 10 Influencers Are Free</h2>
+                <p>Join 500+ micro-SaaS founders already growing with InfluenceSnap</p>
+                
+                <div class="cta-form">
+                    <form class="final-email-form" id="finalEmailForm">
+                        <div class="form-group">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit" class="primary-cta">Get Started Free</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="trust-signals">
+                    <div class="trust-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>No Credit Card Required</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Setup in 2 Minutes</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-times-circle"></i>
+                        <span>Cancel Anytime</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>🎯 InfluenceSnap</h3>
+                    <p>One-click influencer outreach for micro-SaaS</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 InfluenceSnap. Made with ❤️ for indie hackers.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
