@@ -27,6 +27,7 @@
     "url": "https://github.com/yourusername/influencesnap-landing"
   },
   "dependencies": {
+    "googleapis": "^155.0.0",
     "stripe": "^13.0.0"
   }
 }

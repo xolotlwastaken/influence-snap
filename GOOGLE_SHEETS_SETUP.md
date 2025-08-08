@@ -21,7 +21,7 @@ This guide will help you set up automatic email logging to Google Sheets for you
 function doPost(e) {
   try {
     // Replace with your actual spreadsheet ID from Step 1
-    const spreadsheetId = 'YOUR_SPREADSHEET_ID_HERE';
+    const spreadsheetId = '11sIMKES9Vdpx_SvueK5hMalp82yNqBBhFHEUTxUiTcU';
     const sheet = SpreadsheetApp.openById(spreadsheetId).getActiveSheet();
 
     // Parse FormData parameters
