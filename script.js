@@ -82,29 +82,26 @@ async function handleEmailSubmission(e) {
 // Google Sheets integration
 async function logEmailToGoogleSheets(email, formSource) {
     // Replace this URL with your Google Apps Script Web App URL
-    // Instructions for setting this up are in the comments below
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzWj6zrT5BXdAY1eq0SNqazBOOxRxdG_eQNckqoWy4mX4Qt9dmoTT184q5NkiQ46rIy/exec';
-    
-    const data = {
-        email: email,
-        source: formSource === 'heroEmailForm' ? 'Hero Section' : 'Final CTA',
-        timestamp: new Date().toISOString(),
-        userAgent: navigator.userAgent,
-        referrer: document.referrer || 'Direct'
-    };
-    
+
+    // Use FormData to avoid CORS preflight
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('source', formSource === 'heroEmailForm' ? 'Hero Section' : 'Final CTA');
+    formData.append('timestamp', new Date().toISOString());
+    formData.append('userAgent', navigator.userAgent);
+    formData.append('referrer', document.referrer || 'Direct');
+
     const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
+        body: formData
+        // No custom headers!
     });
-    
+
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
-    
+
     return response.json();
 }
 

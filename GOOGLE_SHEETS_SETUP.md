@@ -23,10 +23,14 @@ function doPost(e) {
     // Replace with your actual spreadsheet ID from Step 1
     const spreadsheetId = 'YOUR_SPREADSHEET_ID_HERE';
     const sheet = SpreadsheetApp.openById(spreadsheetId).getActiveSheet();
-    
-    // Parse the incoming data
-    const data = JSON.parse(e.postData.contents);
-    
+
+    // Parse FormData parameters
+    const email = e.parameter.email || '';
+    const source = e.parameter.source || '';
+    const timestamp = e.parameter.timestamp || new Date().toISOString();
+    const userAgent = e.parameter.userAgent || '';
+    const referrer = e.parameter.referrer || '';
+
     // Add headers if this is the first entry
     if (sheet.getLastRow() === 0) {
       sheet.getRange(1, 1, 1, 5).setValues([
@@ -40,38 +44,24 @@ function doPost(e) {
     }
     // Add the new email entry
     sheet.appendRow([
-      new Date(data.timestamp),
-      data.email,
-      data.source,
-      data.userAgent,
-      data.referrer
+      new Date(timestamp),
+      email,
+      source,
+      userAgent,
+      referrer
     ]);
     // Auto-resize columns for better readability
     sheet.autoResizeColumns(1, 5);
     return ContentService
       .createTextOutput(JSON.stringify({success: true, message: 'Email logged successfully'}))
       .setMimeType(ContentService.MimeType.JSON)
-      .setHeader('Access-Control-Allow-Origin', '*')
-      .setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
-      .setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      .setHeader('Access-Control-Allow-Origin', '*');
   } catch (error) {
-    console.error('Error logging email:', error);
     return ContentService
       .createTextOutput(JSON.stringify({success: false, error: error.toString()}))
       .setMimeType(ContentService.MimeType.JSON)
-      .setHeader('Access-Control-Allow-Origin', '*')
-      .setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
-      .setHeader('Access-Control-Allow-Headers', 'Content-Type');
+      .setHeader('Access-Control-Allow-Origin', '*');
   }
-}
-
-// Handle preflight OPTIONS requests for CORS
-function doOptions(e) {
-  return ContentService.createTextOutput('')
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeader('Access-Control-Allow-Origin', '*')
-    .setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
-    .setHeader('Access-Control-Allow-Headers', 'Content-Type');
 }
 ```
 
