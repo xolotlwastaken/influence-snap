@@ -32,14 +32,12 @@ function doPost(e) {
       sheet.getRange(1, 1, 1, 5).setValues([
         ['Timestamp', 'Email', 'Source', 'User Agent', 'Referrer']
       ]);
-      
       // Style the headers
       const headerRange = sheet.getRange(1, 1, 1, 5);
       headerRange.setBackground('#4285F4');
       headerRange.setFontColor('white');
       headerRange.setFontWeight('bold');
     }
-    
     // Add the new email entry
     sheet.appendRow([
       new Date(data.timestamp),
@@ -48,20 +46,32 @@ function doPost(e) {
       data.userAgent,
       data.referrer
     ]);
-    
     // Auto-resize columns for better readability
     sheet.autoResizeColumns(1, 5);
-    
     return ContentService
       .createTextOutput(JSON.stringify({success: true, message: 'Email logged successfully'}))
-      .setMimeType(ContentService.MimeType.JSON);
-      
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeader('Access-Control-Allow-Origin', '*')
+      .setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+      .setHeader('Access-Control-Allow-Headers', 'Content-Type');
   } catch (error) {
     console.error('Error logging email:', error);
     return ContentService
       .createTextOutput(JSON.stringify({success: false, error: error.toString()}))
-      .setMimeType(ContentService.MimeType.JSON);
+      .setMimeType(ContentService.MimeType.JSON)
+      .setHeader('Access-Control-Allow-Origin', '*')
+      .setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+      .setHeader('Access-Control-Allow-Headers', 'Content-Type');
   }
+}
+
+// Handle preflight OPTIONS requests for CORS
+function doOptions(e) {
+  return ContentService.createTextOutput('')
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader('Access-Control-Allow-Origin', '*')
+    .setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+    .setHeader('Access-Control-Allow-Headers', 'Content-Type');
 }
 ```
 
