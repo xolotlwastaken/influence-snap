@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Email submission handler
-function handleEmailSubmission(e) {
+async function handleEmailSubmission(e) {
     e.preventDefault();
     
     const form = e.target;
@@ -38,8 +38,10 @@ function handleEmailSubmission(e) {
     submitBtn.classList.add('loading');
     submitBtn.textContent = 'Joining...';
     
-    // Simulate API call (replace with actual Stripe/email service integration)
-    setTimeout(() => {
+    try {
+        // Log email to Google Sheets
+        await logEmailToGoogleSheets(email, form.id);
+        
         // Success state
         submitBtn.classList.remove('loading');
         submitBtn.textContent = '✅ You\'re in!';
@@ -55,10 +57,55 @@ function handleEmailSubmission(e) {
             submitBtn.style.background = '';
         }, 3000);
         
-        // Here you would integrate with your email service
-        console.log('Email captured:', email);
+        // Track the email capture
+        console.log('Email captured and logged:', email);
         
-    }, 2000);
+    } catch (error) {
+        // Error state
+        submitBtn.classList.remove('loading');
+        submitBtn.textContent = 'Try Again';
+        submitBtn.style.background = '#ef4444';
+        
+        // Show error message
+        showNotification('Something went wrong. Please try again.', 'error');
+        
+        // Reset button after delay
+        setTimeout(() => {
+            submitBtn.textContent = form.id === 'heroEmailForm' ? 'Get Started' : 'Get Started Free';
+            submitBtn.style.background = '';
+        }, 3000);
+        
+        console.error('Error logging email:', error);
+    }
+}
+
+// Google Sheets integration
+async function logEmailToGoogleSheets(email, formSource) {
+    // Replace this URL with your Google Apps Script Web App URL
+    // Instructions for setting this up are in the comments below
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzWj6zrT5BXdAY1eq0SNqazBOOxRxdG_eQNckqoWy4mX4Qt9dmoTT184q5NkiQ46rIy/exec';
+    
+    const data = {
+        email: email,
+        source: formSource === 'heroEmailForm' ? 'Hero Section' : 'Final CTA',
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+        referrer: document.referrer || 'Direct'
+    };
+    
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    });
+    
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    return response.json();
 }
 
 // Notification system
@@ -84,7 +131,7 @@ function showNotification(message, type = 'info') {
         position: fixed;
         top: 20px;
         right: 20px;
-        background: ${type === 'success' ? '#10b981' : '#3b82f6'};
+        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
         color: white;
         padding: 16px 20px;
         border-radius: 8px;
