@@ -82,7 +82,7 @@ async function handleEmailSubmission(e) {
 // Google Sheets integration
 async function logEmailToGoogleSheets(email, formSource) {
     // Replace this URL with your Google Apps Script Web App URL
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzWj6zrT5BXdAY1eq0SNqazBOOxRxdG_eQNckqoWy4mX4Qt9dmoTT184q5NkiQ46rIy/exec';
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwzr5Og_ukROq9rOrpyd-xwBN70r1DPuTIRJBRQgAKkce3UxG2nlCzOBNGxAdqic21E/exec';
 
     // Use FormData to avoid CORS preflight
     const formData = new FormData();
